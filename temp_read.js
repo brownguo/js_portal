@@ -1172,8 +1172,26 @@ function replace_var_ac(path) {
         let value = bmak[node.property.value]
         // console.log(bmak[node.property.value]+" => "+typeof(value))
         // path.replaceWith(value)
-
-        console.log(typeof(value)+ " => "+node.property.value)
+        // console.log(value)
+        switch (typeof value){
+            case 'boolean':
+                console.log("Boolean: " + value.name)
+                break;
+            case 'string':
+                console.log("String: " + value.name)
+                break;
+            case 'function':
+                console.log("Function: " + value.name + "Type: " + typeof value.name)
+                break;
+            case 'number':
+                console.log("Number: " + value)
+                break;
+            case 'object':
+                console.log("Number: " + value)
+                break;
+            default:
+                console.log('出现其他类型:' + typeof value)
+        }
     }
 
 }
