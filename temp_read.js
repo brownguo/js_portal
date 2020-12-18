@@ -1189,6 +1189,9 @@ function replace_var_ac(path) {
             case 'object':
                 console.log("Number: " + value)
                 break;
+            case 'undefined':
+                console.log("Undefined: " + value)
+                break;
             default:
                 console.log('出现其他类型:' + typeof value)
         }
