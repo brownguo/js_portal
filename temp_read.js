@@ -1161,6 +1161,8 @@ function decode_unicode(path) {
 // 把_ac 这个变量都替换成明文
 function replace_var_ac(path) {
     var node = path.node
+    // console.log(node.left)
+    // return
     if (node.object.name == "_ac"){
         // console.log(node.object.name +" => "+node.property.value)
         // console.log(_ac[node.property.value])
@@ -1168,29 +1170,22 @@ function replace_var_ac(path) {
         path.replaceWith(types.StringLiteral(value))
     }
     if (node.object.name == "bmak"){
-        // console.log(node.object.name +" => "+ node.property.value)
         let value = bmak[node.property.value]
-        // console.log(bmak[node.property.value]+" => "+typeof(value))
-        // path.replaceWith(value)
-        // console.log(value)
         switch (typeof value){
             case 'boolean':
-                console.log("Boolean: " + value.name)
+                console.log(types.BooleanLiteral(value))
+                // path.replaceWith(types.BooleanLiteral(bmak[node.property.value]))
                 break;
             case 'string':
-                console.log("String: " + value.name)
+                path.replaceWith(types.StringLiteral(value))
                 break;
             case 'function':
-                console.log("Function: " + value.name + "Type: " + typeof value.name)
                 break;
             case 'number':
-                console.log("Number: " + value)
                 break;
             case 'object':
-                console.log("Number: " + value)
                 break;
             case 'undefined':
-                console.log("Undefined: " + value)
                 break;
             default:
                 console.log('出现其他类型:' + typeof value)
