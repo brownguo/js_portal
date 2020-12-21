@@ -1173,10 +1173,12 @@ function replace_var_ac(path) {
         let value = bmak[node.property.value]
         switch (typeof value){
             case 'boolean':
-                console.log(types.BooleanLiteral(value))
+                // console.log(types.BooleanLiteral(value))
                 // path.replaceWith(types.BooleanLiteral(bmak[node.property.value]))
                 break;
             case 'string':
+                delete node.property.extra
+                console.log(node.property)
                 path.replaceWith(types.StringLiteral(value))
                 break;
             case 'function':
