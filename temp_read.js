@@ -1174,12 +1174,19 @@ function replace_var_ac(path) {
         switch (typeof value){
             case 'boolean':
                 // console.log(types.BooleanLiteral(value))
-                // path.replaceWith(types.BooleanLiteral(bmak[node.property.value]))
+                console.log(types.valueToNode(bmak[node.property.value]))
+                console.log("原始值: " + path.toString() + " 结果值: " + bmak[node.property.value])
+
+                a = path.replaceWith(types.valueToNode(bmak[node.property.value]))
+                console.log("start==========")
+                console.log(a)
+                console.log("end==========")
                 break;
             case 'string':
-                delete node.property.extra
-                console.log(node.property)
-                path.replaceWith(types.StringLiteral(value))
+
+                // delete node.property.extra
+                // console.log(node.property)
+                // path.replaceWith(types.StringLiteral(value))
                 break;
             case 'function':
                 break;
@@ -1190,7 +1197,7 @@ function replace_var_ac(path) {
             case 'undefined':
                 break;
             default:
-                console.log('出现其他类型:' + typeof value)
+                // console.log('出现其他类型:' + typeof value)
         }
     }
 
