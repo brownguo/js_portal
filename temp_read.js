@@ -1172,12 +1172,15 @@ function replace_var_ac(path) {
         switch (typeof value){
             case 'boolean':
                 let val = types.valueToNode(bmak[node.property.value])
-                console.log("原始值: " + path.toString() + " 结果值: " + bmak[node.property.value] + " 类型: " + typeof bmak[node.property.value])
-                console.log("=================原始node=======================")
-                console.log(path.node)
-                path.replaceWith(val)
-                console.log("=================替换结果=======================")
-                console.log(path.node)
+                // console.log("原始值: " + path.toString() + " 结果值: " + bmak[node.property.value] + " 类型: " + typeof bmak[node.property.value])
+                // console.log("=================原始node=======================")
+                // console.log(path.node)
+                // path.replaceWith(val)
+                // console.log("=================替换结果=======================")
+                // console.log(path.node)
+                // console.log(node.computed)
+                node.property = val //这里需要改进一下。
+                node.computed = false
                 break;
             case 'string':
                 break;
@@ -1204,7 +1207,7 @@ let ast = parser.parse(js_code)
 traverse(ast,visitor)
 let { code }  = generator(ast)
 
-// 将转换后的代码写入新文件
-// fs.writeFile('nike_cn_decode_1.js',code,(err)=>{
-//     console.log(err)
-// })
+//将转换后的代码写入新文件
+fs.writeFile('nike_cn_decode_2.js',code,(err)=>{
+    console.log(err)
+})
