@@ -1179,8 +1179,9 @@ function replace_var_ac(path) {
                 // console.log("=================替换结果=======================")
                 // console.log(path.node)
                 // console.log(node.computed)
-                node.property = val //这里需要改进一下。
-                node.computed = false
+                // node.property = val //这里需要改进一下。
+                // node.computed = false
+                console.log(node)
                 break;
             case 'string':
                 break;
