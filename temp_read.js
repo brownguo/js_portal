@@ -1164,8 +1164,6 @@ function replace_var_ac(path) {
     // console.log(node.left)
     // return
     if (node.object.name == "_ac"){
-        // console.log(node.object.name +" => "+node.property.value)
-        // console.log(_ac[node.property.value])
         let value = _ac[node.property.value]
         path.replaceWith(types.StringLiteral(value))
     }
@@ -1173,20 +1171,15 @@ function replace_var_ac(path) {
         let value = bmak[node.property.value]
         switch (typeof value){
             case 'boolean':
-                // console.log(types.BooleanLiteral(value))
-                console.log(types.valueToNode(bmak[node.property.value]))
-                console.log("原始值: " + path.toString() + " 结果值: " + bmak[node.property.value])
-
-                a = path.replaceWith(types.valueToNode(bmak[node.property.value]))
-                console.log("start==========")
-                console.log(a)
-                console.log("end==========")
+                let val = types.valueToNode(bmak[node.property.value])
+                console.log("原始值: " + path.toString() + " 结果值: " + bmak[node.property.value] + " 类型: " + typeof bmak[node.property.value])
+                console.log("=================原始node=======================")
+                console.log(path.node)
+                path.replaceWith(val)
+                console.log("=================替换结果=======================")
+                console.log(path.node)
                 break;
             case 'string':
-
-                // delete node.property.extra
-                // console.log(node.property)
-                // path.replaceWith(types.StringLiteral(value))
                 break;
             case 'function':
                 break;
