@@ -1166,36 +1166,18 @@ function replace_var_ac(path) {
     if (node.object.name == "_ac"){
         let value = _ac[node.property.value]
         path.replaceWith(types.StringLiteral(value))
+        // console.log("==========================")
+        // console.log(path.node)
+        // console.log("==========================")
     }
     if (node.object.name == "bmak"){
         let value = bmak[node.property.value]
-        switch (typeof value){
-            case 'boolean':
-                let val = types.valueToNode(bmak[node.property.value])
-                // console.log("原始值: " + path.toString() + " 结果值: " + bmak[node.property.value] + " 类型: " + typeof bmak[node.property.value])
-                // console.log("=================原始node=======================")
-                // console.log(path.node)
-                // path.replaceWith(val)
-                // console.log("=================替换结果=======================")
-                // console.log(path.node)
-                // console.log(node.computed)
-                // node.property = val //这里需要改进一下。
-                // node.computed = false
-                console.log(node)
-                break;
-            case 'string':
-                break;
-            case 'function':
-                break;
-            case 'number':
-                break;
-            case 'object':
-                break;
-            case 'undefined':
-                break;
-            default:
-                // console.log('出现其他类型:' + typeof value)
-        }
+        let val = types.valueToNode(value)
+        console.log(val)
+
+        // console.log("原始值: " + path.toString() + " 结果值: " + bmak[node.property.value] + " 类型: " + typeof bmak[node.property.value])
+        // path.replaceWith(val)
+        // console.log(path.node)
     }
 
 }
@@ -1209,6 +1191,6 @@ traverse(ast,visitor)
 let { code }  = generator(ast)
 
 //将转换后的代码写入新文件
-fs.writeFile('nike_cn_decode_2.js',code,(err)=>{
-    console.log(err)
-})
+// fs.writeFile('nike_cn_decode_2.js',code,(err)=>{
+//     console.log(err)
+// })
