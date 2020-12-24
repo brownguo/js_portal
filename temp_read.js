@@ -1172,12 +1172,29 @@ function replace_var_ac(path) {
     }
     if (node.object.name == "bmak"){
         let value = bmak[node.property.value]
-        let val = types.valueToNode(value)
-        console.log(val)
-
-        // console.log("原始值: " + path.toString() + " 结果值: " + bmak[node.property.value] + " 类型: " + typeof bmak[node.property.value])
-        // path.replaceWith(val)
-        // console.log(path.node)
+        switch (typeof value){
+            case 'boolean':
+                // let val = types.valueToNode(bmak[node.property.value])
+                // console.log("原始值: " + path.toString() + " 结果值: " + bmak[node.property.value] + " 类型: " + typeof bmak[node.property.value])
+                // path.replaceWith(val)
+                // console.log(path.node)
+                break;
+            case 'string':
+                path.replaceWith(types.valueToNode(bmak[node.property.value]))
+                break;
+            case 'function':
+                break;
+            case 'number':
+                path.replaceWith(types.valueToNode(bmak[node.property.value]))
+                break;
+            case 'object':
+                break;
+            case 'undefined':
+                break;
+            default:
+                // console.log('出现其他类型:' + typeof value)
+                break;
+        }
     }
 
 }
