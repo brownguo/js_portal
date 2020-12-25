@@ -1413,11 +1413,11 @@ if (function (a) {
     for (var i = 0; i < 3; i++) setTimeout(bmak["getmr"], 400 + 5e3 * i);
 
     bmak["mn_init"]();
-    console.log("===========================")
-    console.log(JSON.stringify(bmak))
-    console.log("===========================")
   } catch (a) {
 
   }
-
 }
+
+console.log("===========================")
+console.log(JSON.stringify(bmak))
+console.log("===========================")
