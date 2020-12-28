@@ -352,6 +352,7 @@ var _cf = _cf || [],
         a = a + c + ",";
       }
 
+      console.log("get mr :"+ a)
       bmak["mr"] = a;
     } catch (a) {
       bmak["mr"] = "exception";
@@ -854,6 +855,17 @@ var _cf = _cf || [],
           D = bmak["get_cf_date"](),
           B = T + bmak["od"](F, T) + bmak["sensor_data"];
       bmak["sensor_data"] = B + ";" + (bmak["get_cf_date"]() - a) + ";" + bmak["tst"] + ";" + (bmak["get_cf_date"]() - D);
+
+      console.log("api_public_key: " + bmak["api_public_key"])
+      console.log("tst: " + bmak["tst"])
+      console.log("cs: " + bmak["cs"])
+      console.log("T: " + bmak["od"](bmak["cs"], bmak["api_public_key"])["slice"](0, 16))
+      console.log("F: " + Math["floor"](bmak["get_cf_date"]() / 36e5))
+      console.log("D: " + bmak["get_cf_date"]())
+      console.log("B: " + T + bmak["od"](F, T) + bmak["sensor_data"])
+      console.log("=========================")
+      console.log("sensor_data: " + bmak["sensor_data"])
+      console.log("=========================")
     } catch (a) {}
 
     bmak["sd_debug"]("</bpd>");
@@ -1174,6 +1186,7 @@ var _cf = _cf || [],
       bmak["ckie"] = a;
     },
     _setCS: function (a) {
+      console.log("set cs value" + bmak["cs"])
       bmak["cs"] = (String(a) + bmak["cs"])["slice"](0, 16);
     },
     _setFsp: function (a) {
@@ -1408,16 +1421,14 @@ if (function (a) {
   };
 
   try {
-    bmak["ir"](), bmak["t_tst"] = bmak["get_cf_date"](), bmak["startTracking"](), bmak["tst"] = bmak["get_cf_date"]() - bmak["t_tst"], bmak["disFpCalOnTimeout"] || setTimeout(bmak["calc_fp"], 500);
-
-    for (var i = 0; i < 3; i++) setTimeout(bmak["getmr"], 400 + 5e3 * i);
-
+    bmak["ir"]();
+    bmak["t_tst"] = bmak["get_cf_date"]();
+    bmak["startTracking"]();
+    bmak["tst"] = bmak["get_cf_date"]() - bmak["t_tst"];
+    bmak["disFpCalOnTimeout"] || setTimeout(bmak["calc_fp"], 500);
+    for (var i = 0; i < 3; i++) {
+      setTimeout(bmak["getmr"], 400 + 5000 * i);
+    }
     bmak["mn_init"]();
-  } catch (a) {
-
-  }
+  } catch (a) {}
 }
-
-console.log("===========================")
-console.log(JSON.stringify(bmak))
-console.log("===========================")
