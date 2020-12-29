@@ -351,8 +351,6 @@ var _cf = _cf || [],
 
         a = a + c + ",";
       }
-
-      console.log("get mr :"+ a)
       bmak["mr"] = a;
     } catch (a) {
       bmak["mr"] = "exception";
@@ -855,7 +853,9 @@ var _cf = _cf || [],
           D = bmak["get_cf_date"](),
           B = T + bmak["od"](F, T) + bmak["sensor_data"];
       bmak["sensor_data"] = B + ";" + (bmak["get_cf_date"]() - a) + ";" + bmak["tst"] + ";" + (bmak["get_cf_date"]() - D);
-
+      console.log("=========================")
+      var input_info = this.getforminfo()
+      console.log(input_info)
       console.log("api_public_key: " + bmak["api_public_key"])
       console.log("tst: " + bmak["tst"])
       console.log("cs: " + bmak["cs"])
@@ -863,7 +863,6 @@ var _cf = _cf || [],
       console.log("F: " + Math["floor"](bmak["get_cf_date"]() / 36e5))
       console.log("D: " + bmak["get_cf_date"]())
       console.log("B: " + T + bmak["od"](F, T) + bmak["sensor_data"])
-      console.log("=========================")
       console.log("sensor_data: " + bmak["sensor_data"])
       console.log("=========================")
     } catch (a) {}
@@ -884,7 +883,9 @@ var _cf = _cf || [],
           m = bmak["rir"](m, 47, 57, i), m != a["charCodeAt"](o) && (r = String["fromCharCode"](m)), e["push"](r);
         }
 
-        if (e["length"] > 0) return e["join"]("");
+        if (e["length"] > 0){
+          return e["join"]("");
+        }
       }
     } catch (a) {}
 
